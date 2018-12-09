@@ -1,0 +1,60 @@
+ <!doctype html>
+<!--<html style="height: 100%; margin: 0;">-->
+<html style="height: 100%; lang= en;">
+<head>
+<title>Bless Online Map </title> <!--Make Icon for Tab Title-->
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
+	<!-- Semantic -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+
+  	<!-- Leaflet -->
+	<link rel="stylesheet" href="scripts/leaflet/leaflet.css">
+	<script src="scripts/leaflet/leaflet.js"></script>
+
+	<!-- My CSS/Scripts -->
+	
+
+</head>
+
+<body>
+	<!-- Menu Icon Button -->
+	<div class="ui top attached menu">
+		<a class="item">
+			<i class="sidebar icon"></i> Menu
+		</a>
+	</div>
+
+	<div id="map"></div>
+
+
+<script type="text/javascript">
+	var map = L.map('map' , {zoomControl: false, atrributionControl: true}).setView([0, 0], 1);
+		//zoom control
+		L.control.zoom({
+		position:'topleft'
+		}).addTo(map);
+
+	L.tileLayer(' world/{z}/{x}/{y}.png',{
+		tms: false,
+		minZoom: 4,
+		maxZoom: 6,
+		continuousWorld: false,
+		noWrap: true,
+		}).addTo(map);
+	//marker find latlng
+	var marker = L.marker([0, 0], {
+		draggable: true,
+		}).addTo(map);
+	marker.on('dragend', function(e) {
+		alert(marker.getLatLng());
+		});
+
+
+</script>
+</body>
+</html>
